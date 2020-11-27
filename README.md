@@ -1,1 +1,1 @@
-# cpp_template
+# cpp_gui_template
