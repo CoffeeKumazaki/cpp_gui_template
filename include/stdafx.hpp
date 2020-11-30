@@ -1,7 +1,9 @@
 #pragma once
 
+#include <fstream>
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
+#include <unistd.h>
 
 #include <array>
 #include <vector>
@@ -11,3 +13,4 @@
 
 #include <algorithm>
 #include <math.h>
+#include <random>
