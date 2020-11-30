@@ -11,12 +11,20 @@ project(${PROJECT_NAME})
 
 # include_directories(include)
 
+find_package(OpenGL REQUIRED)
+add_definitions(-DIMGUI_IMPL_OPENGL_LOADER_GLEW)
+include_directories(/usr/local/opt/glew/include)
+include_directories(/usr/local/opt/glfw/include)
+link_directories(/usr/local/lib)
+
 ## add imgui as a library
 add_library(imgui STATIC
-  include/imgui/imgui.cpp
-  include/imgui/imgui_demo.cpp
-  include/imgui/imgui_draw.cpp
-  include/imgui/imgui_widgets.cpp    
+  src/imgui/imgui.cpp
+  src/imgui/imgui_demo.cpp
+  src/imgui/imgui_draw.cpp
+  src/imgui/imgui_widgets.cpp
+  src/imgui/imgui_impl_glfw.cpp
+  src/imgui/imgui_impl_opengl3.cpp
 )
 
 ## Define libraries
@@ -33,4 +41,9 @@ add_executable(${PROJECT_NAME} ${SRCS})
 target_include_directories(${PROJECT_NAME} PUBLIC
   include
 )
-target_link_libraries(${PROJECT_NAME} imgui)
+target_link_libraries(${PROJECT_NAME} 
+  imgui
+  glew
+  glfw 
+  ${OPENGL_gl_LIBRARY} 
+)
