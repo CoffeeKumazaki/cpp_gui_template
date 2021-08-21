@@ -34,7 +34,7 @@ static void glfw_error_callback(int error, const char* description) {
 
 static GLFWwindow *window = NULL;
 
-void initImgui(int win_w = 1280 , int win_h = 720, std::string win_title = "LSystem") {
+void initImgui(int win_w = 1280 , int win_h = 720, std::string win_title = PROJECT_NAME) {
 
     // Setup window
     glfwSetErrorCallback(glfw_error_callback);

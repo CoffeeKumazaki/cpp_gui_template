@@ -14,8 +14,11 @@ project(${PROJECT_NAME})
 find_package(OpenGL REQUIRED)
 add_definitions(-DIMGUI_IMPL_OPENGL_LOADER_GLEW)
 include_directories(/usr/local/opt/glew/include)
+include_directories(/opt/homebrew/opt/glew/include)
 include_directories(/usr/local/opt/glfw/include)
+include_directories(/opt/homebrew/opt/glfw/include)
 link_directories(/usr/local/lib)
+link_directories(/opt/homebrew/lib)
 
 ## add imgui as a library
 add_library(imgui STATIC
@@ -47,3 +50,4 @@ target_link_libraries(${PROJECT_NAME}
   glfw 
   ${OPENGL_gl_LIBRARY} 
 )
+target_compile_definitions(${PROJECT_NAME} PRIVATE PROJECT_NAME="${PROJECT_NAME}")
