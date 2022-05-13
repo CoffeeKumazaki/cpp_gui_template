@@ -9,32 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 project(${PROJECT_NAME})
 
-# include_directories(include)
-
-find_package(OpenGL REQUIRED)
-add_definitions(-DIMGUI_IMPL_OPENGL_LOADER_GLEW)
-include_directories(/usr/local/opt/glew/include)
-include_directories(/opt/homebrew/opt/glew/include)
-include_directories(/usr/local/opt/glfw/include)
-include_directories(/opt/homebrew/opt/glfw/include)
-link_directories(/usr/local/lib)
-link_directories(/opt/homebrew/lib)
-
-## add imgui as a library
-add_library(imgui STATIC
-  src/imgui/imgui.cpp
-  src/imgui/imgui_demo.cpp
-  src/imgui/imgui_draw.cpp
-  src/imgui/imgui_widgets.cpp
-  src/imgui/imgui_impl_glfw.cpp
-  src/imgui/imgui_impl_opengl3.cpp
-)
-
-## Define libraries
-# target_include_directories(${PROJECT_NAME}_lib include)
-# add_library(${PROJECT_NAME}_lib
-# 
-#)
+include_directories(include)
 
 ## Define the executable
 set(SRCS 
@@ -44,10 +19,5 @@ add_executable(${PROJECT_NAME} ${SRCS})
 target_include_directories(${PROJECT_NAME} PUBLIC
   include
 )
-target_link_libraries(${PROJECT_NAME} 
-  imgui
-  glew
-  glfw 
-  ${OPENGL_gl_LIBRARY} 
-)
+
 target_compile_definitions(${PROJECT_NAME} PRIVATE PROJECT_NAME="${PROJECT_NAME}")
